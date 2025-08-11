@@ -1,4 +1,20 @@
 pipeline {
+    agent {
+        docker {
+            image 'docker:24.0.7-cli'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
+    stages {
+        stage('Test Docker') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+    }
+}
+
+/*pipeline {
   agent any
 
   stages {
@@ -7,7 +23,7 @@ pipeline {
         sh 'python3 --version'
         sh 'docker --version'
       }
-    }    
+    }*/    
     /*stage('docker') {
       agent {
         docker {
@@ -20,7 +36,7 @@ pipeline {
                 sh 'docker --version'
             }
     }*/
-    stage('hello') {
+    /*stage('hello') {
       steps {
         sh 'python3 hello.py'
       }
@@ -37,4 +53,4 @@ pipeline {
     }
     
   }
-}
+}*/
