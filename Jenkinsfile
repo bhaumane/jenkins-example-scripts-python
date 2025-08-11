@@ -4,6 +4,7 @@ pipeline {
     stage('version') {
       steps {
         sh 'python3 --version'
+        sh 'docker --version'
       }
     }    
     /* stage('docker') {
