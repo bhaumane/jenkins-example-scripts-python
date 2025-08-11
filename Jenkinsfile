@@ -13,6 +13,11 @@ pipeline {
           args '-u root:root'
         }
       }
+      stage('Install Dependencies') {
+        steps {
+          sh 'pip install -r requirements.txt'
+        }
+      }
     }
     stage('hello') {
       steps {
