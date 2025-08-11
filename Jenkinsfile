@@ -7,18 +7,18 @@ pipeline {
         sh 'docker --version'
       }
     }    
-    /* stage('docker') {
+    stage('docker') {
       agent {
         docker {
           image 'python:latest'
-          args '-u root:root'
+          //args '-u root:root'
         }
       }
       steps {
                 sh 'python --version'
-                sh 'pip install -r requirements.txt'
+                sh 'docker --version'
             }
-    }*/
+    }
     stage('hello') {
       steps {
         sh 'python3 hello.py'
