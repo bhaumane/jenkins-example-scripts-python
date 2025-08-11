@@ -5,6 +5,14 @@ pipeline {
       steps {
         sh 'python3 --version'
       }
+    }    
+    stage('docker') {
+      agent {
+        docker {
+          image 'python:3.8'
+          args '-u root:root'
+        }
+      }
     }
     stage('hello') {
       steps {
