@@ -16,10 +16,6 @@ pipeline {
                 // Pull the latest official Python image and run Python inside it
                 sh '''
                     echo "Pulling latest Python image..."
-                    docker pull python:latest
-
-                    echo "Checking Python version inside container..."
-                    docker run --rm python:latest python --version
                 '''
             }
         }
