@@ -25,7 +25,11 @@ pipeline {
     }
     post {
         always {
-            echo '==========POST STAGE=========='            
+            echo '==========POST STAGE=========='  
+            // Create summary report
+            sh "mkdir -p ${REPORT_DIR}"
+            sh "echo 'Pipeline executed on: $(date)' > ${REPORT_DIR}/summary.txt"
+            sh "echo 'Build environment: ${APP_ENV}' >> ${REPORT_DIR}/summary.txt"          
         }
         success {
             echo 'Build and tests completed successfully!'
