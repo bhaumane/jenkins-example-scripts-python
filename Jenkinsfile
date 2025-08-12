@@ -1,4 +1,22 @@
 pipeline {
+    agent any
+
+    environment {
+        APP_ENV = 'staging'
+        REPORT_DIR = 'reports'
+    }
+
+    stages {
+      stage('build') {
+        steps {
+            echo '==========BUILD STAGE=========='
+            sh 'mvn clean install -DskipTests'
+        }
+      }
+    }
+}
+
+/*pipeline {
     agent {
         docker {
             image 'docker:24.0.7-cli'
@@ -21,7 +39,7 @@ pipeline {
         }
     }
 }
-
+*/
 /*pipeline {
   agent any
 
