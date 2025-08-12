@@ -6,16 +6,33 @@ pipeline {
         REPORT_DIR = 'reports'
     }
 
-    tools {
-        maven 'MavenM3'
-    }
     stages {
       stage('build') {
         steps {
             echo '==========BUILD STAGE=========='
-            //sh 'mvn clean install -DskipTests'
         }
       }
+      stage('Unit Test') {
+            steps {
+                echo "===== UNIT TEST STAGE ====="
+            }
+        }
+      stage('Integration Test') {
+            steps {
+                echo "===== INTEGRATION TEST STAGE ====="
+            }
+        }
+    }
+    post {
+        always {
+            echo '==========POST STAGE=========='            
+        }
+        success {
+            echo 'Build and tests completed successfully!'
+        }
+        failure {
+            echo 'Build or tests failed!'
+        }
     }
 }
 
