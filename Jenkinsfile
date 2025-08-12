@@ -6,6 +6,9 @@ pipeline {
         REPORT_DIR = 'reports'
     }
 
+    tools {
+        maven 'MavenM3'
+    }
     stages {
       stage('build') {
         steps {
